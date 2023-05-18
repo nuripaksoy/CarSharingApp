@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MyTabs from './MyTabs';
+import MyTabs from './components/MyTabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { Text, View } from "react-native";
 import StackNavigator from './StackNavigator';
