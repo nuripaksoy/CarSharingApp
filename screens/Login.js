@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -77,66 +78,80 @@ function Login() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={(text) => setUsername(text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-      />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleRegister}>
-          <Text style={styles.buttonText}>Register</Text>
-        </TouchableOpacity>
-      </View>
-
-      <Modal visible={modalVisible} animationType="fade">
-        <View style={styles.modalContainer}>
-          <Text style={styles.modalTitle}>Registration</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Full Name"
-            value={fullName}
-            onChangeText={(text) => setFullName(text)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            value={username}
-            onChangeText={(text) => setUsername(text)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Phone Number"
-            value={phoneNumber}
-            onChangeText={(text) => setPhoneNumber(text)}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-          />
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={handleSave}>
-              <Text style={styles.buttonText}>Save</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={handleModalClose}>
-              <Text style={styles.buttonText}>Close</Text>
-            </TouchableOpacity>
-          </View>
+      <View style={styles.form}>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          value={username}
+          onChangeText={(text) => setUsername(text)}
+        />
+        <View style={{ height: 8 }} />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+        />
+        <View style={{ height: 8 }} />
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <MaterialCommunityIcons name="login" size={20} color="#fff" />
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={handleRegister}>
+            <MaterialCommunityIcons name="account-plus" size={20} color="#fff" />
+            <Text style={styles.buttonText}>Register</Text>
+          </TouchableOpacity>
         </View>
-      </Modal>
+
+        <Modal visible={modalVisible} animationType="fade">
+          <View style={styles.modalContainer}>
+            < View style={styles.form}>
+              <Text style={styles.modalTitle}>Registration</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Full Name"
+                value={fullName}
+                onChangeText={(text) => setFullName(text)}
+              />
+              <View style={{ height: 8 }} />
+              <TextInput
+                style={styles.input}
+                placeholder="Username"
+                value={username}
+                onChangeText={(text) => setUsername(text)}
+              />
+              <View style={{ height: 8 }} />
+              <TextInput
+                style={styles.input}
+                placeholder="Phone Number"
+                value={phoneNumber}
+                onChangeText={(text) => setPhoneNumber(text)}
+              />
+              <View style={{ height: 8 }} />
+              <TextInput
+                style={styles.input}
+                placeholder="Password"
+                secureTextEntry
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+              />
+              <View style={{ height: 8 }} />
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.button} onPress={handleSave}>
+                  <MaterialCommunityIcons name="content-save" size={20} color="#fff" />
+                  <Text style={styles.buttonText}>Save</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={handleModalClose}>
+                  <MaterialCommunityIcons name="close" size={20} color="#fff" />
+                  <Text style={styles.buttonText}>Close</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
     </View>
   );
 }
@@ -149,33 +164,36 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 16,
   },
   input: {
     width: '100%',
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    marginBottom: 16,
     paddingLeft: 8,
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 8,
+    height: 45,
   },
   buttonContainer: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     gap: 8,
   },
   button: {
     backgroundColor: '#e91e63',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
+    width: '48%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     borderRadius: 8,
-    marginBottom: 8,
+    flexDirection: 'row',
   },
   buttonText: {
+    marginLeft: 8,
     color: '#fff',
-    fontSize: 16,
     fontWeight: 'bold',
   },
   modalContainer: {
@@ -185,9 +203,18 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   modalTitle: {
-    fontSize: 24,
+    marginLeft: 8,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: 10,
+  },
+  form: {
+    width: '100%',
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 8,
+    padding: 8,
+    backgroundColor: '#fff',
   },
 });
 

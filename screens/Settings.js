@@ -20,15 +20,15 @@ function Settings() {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.settingItem} onPress={handleChangePassword}>
-        <MaterialCommunityIcons name="lock-reset" size={30} color="#e91e63" />
+        <MaterialCommunityIcons name="lock-reset" size={20} color="#e91e63" />
         <Text style={styles.settingText}>Change Password</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.settingItem} onPress={handleToggleNotifications}>
-        <MaterialCommunityIcons name="bell" size={30} color="#e91e63" />
+        <MaterialCommunityIcons name="bell" size={20} color="#e91e63" />
         <Text style={styles.settingText}>Notifications</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.settingItem} onPress={toggleModal}>
-        <MaterialCommunityIcons name="shield-lock" size={30} color="#e91e63" />
+        <MaterialCommunityIcons name="shield-lock" size={20} color="#e91e63" />
         <Text style={styles.settingText}>Privacy Policy</Text>
       </TouchableOpacity>
 
@@ -54,16 +54,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    padding: 16,
   },
   settingItem: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 16,
+    borderColor: "black",
+    borderWidth: 2,
+    borderRadius: 8,
+    padding: 16,
+    width: "100%",
+    backgroundColor: "white",
   },
   settingText: {
     marginLeft: 16,
-    fontSize: 18,
-    color: "#333",
+    color: "black",
+    fontWeight: "bold",
   },
   modalContainer: {
     flex: 1,
@@ -73,7 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   modalTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
     marginBottom: 16,
     color: "#e91e63",

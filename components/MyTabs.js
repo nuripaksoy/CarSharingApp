@@ -13,12 +13,14 @@ function MyTabs() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: '#e91e63',
+        tabBarInactiveTintColor: 'black',
       }}>
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="routes" color={color} size={size} />
           ),
@@ -29,6 +31,7 @@ function MyTabs() {
         component={Add}
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="car" color={color} size={size} />
           ),
@@ -39,6 +42,7 @@ function MyTabs() {
         component={Profile}
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
@@ -49,6 +53,7 @@ function MyTabs() {
         component={Settings}
         options={{
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="cog" color={color} size={size} />
           ),

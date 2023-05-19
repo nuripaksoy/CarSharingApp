@@ -1,17 +1,20 @@
 import * as React from 'react';
 import MyTabs from './components/MyTabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { Text, View } from "react-native";
 import StackNavigator from './StackNavigator';
+import { SafeAreaView } from "react-native-safe-area-context";
+
 
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <StackNavigator>
-        <MyTabs />
-      </StackNavigator>
-    </NavigationContainer>
+    <SafeAreaView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <StackNavigator>
+          <MyTabs />
+        </StackNavigator>
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
