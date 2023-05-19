@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 function Add() {
+    const [showDatePicker, setShowDatePicker] = useState(false);
     const [dateRange, setDateRange] = useState("");
     const [destination, setDestination] = useState("");
     const [startingPoint, setStartingPoint] = useState("");
@@ -12,27 +14,45 @@ function Add() {
         // You can make an API call here to add the route using the input values
     };
 
+    const handleDateChange = (event, selectedDate) => {
+        setShowDatePicker(false);
+        // Format the selected date and set it as the date range value
+        if (selectedDate) {
+            const formattedDate = selectedDate.toLocaleDateString("en-US");
+            setDateRange(formattedDate);
+        }
+    };
+
+    const showDatePickerModal = () => {
+        setShowDatePicker(true);
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Add a Route</Text>
-            <TextInput
+            <TouchableOpacity style={styles.input} onPress={showDatePickerModal}>
+                <Text>{dateRange ? dateRange : "Select Date Range"}</Text>
+            </TouchableOpacity>
+            {showDatePicker && (
+                <DateTimePicker
+                    value={new Date()}
+                    mode="date"
+                    display="default"
+                    onChange={handleDateChange}
+                />
+            )}
+            <TouchableOpacity
                 style={styles.input}
-                placeholder="Date Range"
-                value={dateRange}
-                onChangeText={setDateRange}
-            />
-            <TextInput
+                onPress={() => console.log("Open destination modal")}
+            >
+                <Text>{destination ? destination : "Destination"}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
                 style={styles.input}
-                placeholder="Destination"
-                value={destination}
-                onChangeText={setDestination}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Starting Point"
-                value={startingPoint}
-                onChangeText={setStartingPoint}
-            />
+                onPress={() => console.log("Open starting point modal")}
+            >
+                <Text>{startingPoint ? startingPoint : "Starting Point"}</Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.saveButton} onPress={handleSaveRoute}>
                 <Text style={styles.saveButtonText}>Save</Text>
                 <MaterialCommunityIcons name="map-plus" size={24} color="#fff" />
@@ -61,9 +81,13 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         paddingHorizontal: 8,
         marginBottom: 16,
+        justifyContent: "center",
+        alignItems: "flex-start",
     },
     saveButton: {
         flexDirection: "row",
+        width: "100%",
+        justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#e91e63",
         borderRadius: 8,
