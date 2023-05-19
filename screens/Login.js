@@ -54,12 +54,18 @@ function Login() {
     // Perform the user registration logic here, e.g., call an API endpoint
     // Pass the registration data to the registration endpoint
     try {
-      const response = await fetch('http://localhost:5060/api/user', {
+      const response = await fetch('https://localhost:7096/api/User', {
         method: 'POST',
         headers: {
+          Accept : 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password, fullName, phoneNumber }),
+        body: JSON.stringify({ 
+          userName : username, 
+          fullName : fullName,
+          password : password,
+          phoneNumber : phoneNumber
+         }),
       });
 
       if (response.ok) {
