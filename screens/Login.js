@@ -11,6 +11,13 @@ function Login() {
   const navigation = useNavigation();
 
   const handleLogin = async () => {
+
+    // admin login for testing
+    if (username === 'admin' && password === 'admin') {
+      navigation.navigate('HomeStackNavigator');
+      return;
+    }
+
     // Perform the login logic here, e.g., call an API endpoint
     // Pass the username and password to the login endpoint
     try {
@@ -24,7 +31,7 @@ function Login() {
 
       if (response.ok) {
         // Handle successful login
-        navigation.navigate('Home');
+        navigation.navigate('HomeStackNavigator');
       } else {
         // Handle login error, e.g., display an error message
         console.log('Login failed');

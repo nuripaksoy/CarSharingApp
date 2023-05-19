@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home'
 import Profile from '../screens/Profile';
 import Settings from '../screens/Settings';
+import Add from '../screens/Add';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -16,6 +17,16 @@ function MyTabs() {
       <Tab.Screen
         name="Home"
         component={Home}
+        options={{
+          tabBarShowLabel: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="routes" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Add"
+        component={Add}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
