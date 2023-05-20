@@ -3,50 +3,20 @@ import { Text, View, ScrollView, StyleSheet, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
+import mockRoutes from "../Constants/mockRoutes";
+import cities from "../Constants/cities";
 
 function Home() {
   const [routes, setRoutes] = useState([]);
-  const [startingPoint, setStartingPoint] = useState("");
-  const [destination, setDestination] = useState("");
-  const mockRoutes = [
-    {
-      id: 1,
-      startingPoint: "New York",
-      destination: "London",
-      date: "2021-10-01",
-      price: 100,
-    },
-    {
-      id: 2,
-      startingPoint: "New York",
-      destination: "Paris",
-      date: "2021-10-02",
-      price: 200,
-    },
-    {
-      id: 3,
-      startingPoint: "New York",
-      destination: "Tokyo",
-      date: "2021-10-03",
-      price: 300,
-    },
-    {
-      id: 4,
-      startingPoint: "London",
-      destination: "New York",
-      date: "2021-10-04",
-      price: 400,
-    },
-    {
-      id: 5,
-      startingPoint: "London",
-      destination: "Paris",
-      date: "2021-10-05",
-      price: 500,
-    },
-  ];
-  const cities = ['New York', 'London', 'Paris', 'Tokyo'];
 
+  // dropdown items
+  const [startingPointOpen, setStartingPointOpen] = useState(false);
+  const [startingPointValue, setStartingPointValue] = useState(null);
+  const [startingPointItems, setStartingPointItems] = useState(cities);
+
+  const [destinationOpen, setDestinationOpen] = useState(false);
+  const [destinationValue, setDestinationValue] = useState(null);
+  const [destinationItems, setDestinationItems] = useState(cities);
 
   useEffect(() => {
     // Fetch the routes data from the API
@@ -85,60 +55,38 @@ function Home() {
 
       <View style={styles.searchContainer}>
         <DropDownPicker
+          open={startingPointOpen}
+          value={startingPointValue}
+          items={startingPointItems}
+          setOpen={setStartingPointOpen}
+          setValue={setStartingPointValue}
+          setItems={setStartingPointItems}
+          zIndex={1200}
+          style={{ borderColor: "black", borderWidth: 2, borderRadius: 8, marginBottom: 8 }}
           placeholder={
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
               <MaterialCommunityIcons name="map-marker" size={24} color="#e91e63" />
-              <Text style={{ color: '#000', fontWeight: 'bold' }}> Destination</Text>
+              <Text style={{ fontWeight: 'bold' }}> Starting Point</Text>
             </View>
           }
-          ArrowDownIconComponent={({ style }) => (
-            <MaterialCommunityIcons name="arrow-down-drop-circle-outline" size={24} color="#e91e63" />
-          )}
-          ArrowUpIconComponent={({ style }) => (
-            <MaterialCommunityIcons name="arrow-up-drop-circle-outline" size={24} color="#e91e63" />
-          )}
-          textStyle={{ color: '#000' }}
-          items={cities.map((city) => ({ label: city, value: city }))}
-          defaultValue={destination}
-          containerStyle={{ height: "auto", marginBottom: 8, borderColor: "black", borderWidth: 2, borderRadius: 8 }}
-          style={{ borderWidth: 0 }}
-          placeholderStyle={{ color: '#000', fontWeight: 'bold' }}
-          dropDownStyle={{ backgroundColor: "#fafafa" }}
-          onChangeItem={(item) => setDestination(item.value)}
         />
         <DropDownPicker
+          open={destinationOpen}
+          value={destinationValue}
+          items={destinationItems}
+          setOpen={setDestinationOpen}
+          setValue={setDestinationValue}
+          setItems={setDestinationItems}
+          zIndex={1100}
+          style={{ borderColor: "black", borderWidth: 2, borderRadius: 8, marginBottom: 8 }}
           placeholder={
-            <View
-
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
               <MaterialCommunityIcons name="map-marker-path" size={24} color="#e91e63" />
-              <Text style={{ color: '#000', fontWeight: 'bold' }}> Starting Point</Text>
+              <Text style={{ fontWeight: 'bold' }}> Destination</Text>
             </View>
           }
-          ArrowDownIconComponent={({ style }) => (
-            <MaterialCommunityIcons name="arrow-down-drop-circle-outline" size={24} color="#e91e63" />
-          )}
-          ArrowUpIconComponent={({ style }) => (
-            <MaterialCommunityIcons name="arrow-up-drop-circle-outline" size={24} color="#e91e63" />
-          )}
-          textStyle={{ color: '#000' }}
-          placeholderStyle={{ color: '#000', fontWeight: 'bold' }}
-          items={cities.map((city) => ({ label: city, value: city }))}
-          defaultValue={startingPoint}
-          containerStyle={{ height: "auto", borderColor: "black", borderWidth: 2, borderRadius: 8 }}
-          style={{ borderWidth: 0 }}
-          dropDownStyle={{ backgroundColor: "#fafafa" }}
-          onChangeItem={(item) => setStartingPoint(item.value)}
         />
+
         <View style={{ height: 8 }} />
 
         <TouchableOpacity style={styles.button} onPress={handleSearch}>
@@ -152,34 +100,36 @@ function Home() {
         Available Routes
       </Text>
 
-      <ScrollView style={{ width: '100%', borderWidth: 2, borderColor: 'black', borderRadius: 8, padding: 8 }}>
-        {/* {routes.map((route) => (
+      <View style={styles.routeList}>
+        <ScrollView style={styles.scrollViewContent}>
+          {/* {routes.map((route) => (
           <View key={route.id} style={styles.routeItem}>
             <Text style={styles.routeText}>Starting Point: {route.startingPoint}</Text>
             <Text style={styles.routeText}>Destination: {route.destination}</Text>
           </View>
         ))} */}
-        {mockRoutes.map((route) => (
-          <TouchableOpacity key={route.id} style={styles.routeItem}>
-            <Text style={styles.routeText}>
-              <MaterialCommunityIcons name="map-marker" size={20} color="#e91e63" />
-              <Text style={{ fontWeight: 'bold' }}> Starting Point:</Text> {route.startingPoint}
-            </Text>
-            <Text style={styles.routeText}>
-              <MaterialCommunityIcons name="map-marker-path" size={20} color="#e91e63" />
-              <Text style={{ fontWeight: 'bold' }}> Destination:</Text> {route.destination}
-            </Text>
-            <Text style={styles.routeText}>
-              <MaterialCommunityIcons name="calendar" size={20} color="#e91e63" />
-              <Text style={{ fontWeight: 'bold' }}> Date:</Text> {route.date}
-            </Text>
-            <Text style={styles.routeText}>
-              <MaterialCommunityIcons name="currency-usd" size={20} color="#e91e63" />
-              <Text style={{ fontWeight: 'bold' }}> Price:</Text> {route.price}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+          {mockRoutes.map((route) => (
+            <TouchableOpacity key={route.id} style={styles.routeItem}>
+              <Text style={styles.routeText}>
+                <MaterialCommunityIcons name="map-marker" size={20} color="#e91e63" />
+                <Text style={{ fontWeight: 'bold' }}> Starting Point:</Text> {route.startingPoint}
+              </Text>
+              <Text style={styles.routeText}>
+                <MaterialCommunityIcons name="map-marker-path" size={20} color="#e91e63" />
+                <Text style={{ fontWeight: 'bold' }}> Destination:</Text> {route.destination}
+              </Text>
+              <Text style={styles.routeText}>
+                <MaterialCommunityIcons name="calendar" size={20} color="#e91e63" />
+                <Text style={{ fontWeight: 'bold' }}> Date:</Text> {route.date}
+              </Text>
+              <Text style={styles.routeText}>
+                <MaterialCommunityIcons name="currency-usd" size={20} color="#e91e63" />
+                <Text style={{ fontWeight: 'bold' }}> Price:</Text> {route.price}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
     </View>
   );
 }
@@ -187,8 +137,6 @@ function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     padding: 20,
   },
   title: {
@@ -208,6 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
     paddingVertical: 8,
+    zIndex: 1000,
   },
   input: {
     flex: 1,
@@ -216,12 +165,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   routeList: {
-    alignItems: "center",
+    flex: 1,
     width: "100%",
+    backgroundColor: "white",
     borderColor: "black",
     borderWidth: 2,
     borderRadius: 8,
     paddingHorizontal: 8,
+  },
+  scrollViewContent: {
+    flexGrow: 1,
     paddingVertical: 8,
   },
   routeItem: {

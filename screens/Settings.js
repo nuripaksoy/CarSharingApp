@@ -19,32 +19,36 @@ function Settings() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.settingItem} onPress={handleChangePassword}>
-        <MaterialCommunityIcons name="lock-reset" size={20} color="#e91e63" />
-        <Text style={styles.settingText}>Change Password</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.settingItem} onPress={handleToggleNotifications}>
-        <MaterialCommunityIcons name="bell" size={20} color="#e91e63" />
-        <Text style={styles.settingText}>Notifications</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.settingItem} onPress={toggleModal}>
-        <MaterialCommunityIcons name="shield-lock" size={20} color="#e91e63" />
-        <Text style={styles.settingText}>Privacy Policy</Text>
-      </TouchableOpacity>
 
-      <Modal visible={isModalVisible} animationType="slide">
-        <View style={styles.modalContainer}>
-          <Text style={styles.modalTitle}>Privacy Policy</Text>
-          <Text style={styles.modalText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac nunc euismod,
-            malesuada felis id, dictum lorem. In viverra velit mi, eget auctor turpis ultrices
-            sed.
-          </Text>
-          <TouchableOpacity style={styles.modalButton} onPress={toggleModal}>
-            <Text style={styles.modalButtonText}>Close</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
+      <View style={styles.settingsContainer}>
+        <TouchableOpacity style={styles.settingItem} onPress={handleChangePassword}>
+          <MaterialCommunityIcons name="lock-reset" size={20} color="#e91e63" />
+          <Text style={styles.settingText}>Change Password</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.settingItem} onPress={handleToggleNotifications}>
+          <MaterialCommunityIcons name="bell" size={20} color="#e91e63" />
+          <Text style={styles.settingText}>Notifications</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.settingItem} onPress={toggleModal}>
+          <MaterialCommunityIcons name="shield-lock" size={20} color="#e91e63" />
+          <Text style={styles.settingText}>Privacy Policy</Text>
+        </TouchableOpacity>
+
+        <Modal visible={isModalVisible} animationType="slide">
+          <View style={styles.modalContainer}>
+            <Text style={styles.modalTitle}>Privacy Policy</Text>
+            <Text style={styles.modalText}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac nunc euismod,
+              malesuada felis id, dictum lorem. In viverra velit mi, eget auctor turpis ultrices
+              sed.
+            </Text>
+            <TouchableOpacity style={styles.modalButton} onPress={toggleModal}>
+              <Text style={styles.modalButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
+      </View>
+
     </View>
   );
 }
@@ -56,10 +60,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 16,
   },
+  settingsContainer: {
+    alignItems: "center",
+    width: "100%",
+    borderColor: "black",
+    borderWidth: 2,
+    borderRadius: 8,
+    padding: 8,
+    backgroundColor: "white",
+  },
   settingItem: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
+    marginVertical: 4,
     borderColor: "black",
     borderWidth: 2,
     borderRadius: 8,

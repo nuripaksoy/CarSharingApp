@@ -4,8 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('admin');
+  const [password, setPassword] = useState('admin');
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -22,7 +22,7 @@ function Login() {
     // Perform the login logic here, e.g., call an API endpoint
     // Pass the username and password to the login endpoint
     try {
-      const response = await fetch('http://localhost:5060/api/login', {
+      const response = await fetch('http://192.168.236.254:5060/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,18 +54,18 @@ function Login() {
     // Perform the user registration logic here, e.g., call an API endpoint
     // Pass the registration data to the registration endpoint
     try {
-      const response = await fetch('https://localhost:7096/api/User', {
+      const response = await fetch('https://192.168.236.254:5060/api/User', {
         method: 'POST',
         headers: {
-          Accept : 'application/json',
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          userName : username, 
-          fullName : fullName,
-          password : password,
-          phoneNumber : phoneNumber
-         }),
+        body: JSON.stringify({
+          userName: username,
+          fullName: fullName,
+          password: password,
+          phoneNumber: phoneNumber
+        }),
       });
 
       if (response.ok) {

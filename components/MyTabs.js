@@ -14,6 +14,11 @@ function MyTabs() {
       screenOptions={{
         tabBarActiveTintColor: '#e91e63',
         tabBarInactiveTintColor: 'black',
+        tabBarStyle: {
+          backgroundColor: '#fff',
+          borderTopWidth: 2,
+          borderTopColor: 'black',
+        },
       }}>
       <Tab.Screen
         name="Home"

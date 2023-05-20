@@ -133,12 +133,17 @@ const styles = StyleSheet.create({
   profileInfo: {
     alignItems: "center",
     width: "100%",
+    borderColor: "black",
+    borderWidth: 2,
+    borderRadius: 8,
+    padding: 8,
+    backgroundColor: "white",
   },
   infoItem: {
     backgroundColor: "white",
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
+    marginVertical: 4,
     borderColor: "black",
     borderWidth: 2,
     borderRadius: 8,
