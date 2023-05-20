@@ -45,14 +45,14 @@ function Add() {
 
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: "row" }}>
-                <MaterialCommunityIcons name="car" size={24} color="#e91e63" />
-                <View style={{ width: 8 }} />
-                <Text style={styles.title}>Add a Route</Text>
-            </View>
             <View style={styles.form}>
+                <View style={{ flexDirection: "row", marginLeft: 8 }}>
+                    <MaterialCommunityIcons name="car" size={24} color="#bb5050" />
+                    <View style={{ width: 8 }} />
+                    <Text style={styles.title}>Add a Route</Text>
+                </View>
                 <TouchableOpacity style={styles.input} onPress={showDatePickerModal}>
-                    <MaterialCommunityIcons name="calendar" size={24} color="#e91e63" />
+                    <MaterialCommunityIcons name="calendar" size={24} color="#bb5050" />
                     <Text style={styles.inputText}>
                         <View style={{ width: 5 }} />
                         {selectedDate ? selectedDate.toLocaleDateString("en-US") : "Select Date"}
@@ -89,7 +89,7 @@ function Add() {
                             <MaterialCommunityIcons
                                 name="map-marker"
                                 size={24}
-                                color="#e91e63"
+                                color="#bb5050"
                             />
                             <Text style={{ fontWeight: "bold" }}> Starting Point</Text>
                         </View>
@@ -114,7 +114,7 @@ function Add() {
                             <MaterialCommunityIcons
                                 name="map-marker-path"
                                 size={24}
-                                color="#e91e63"
+                                color="#bb5050"
                             />
                             <Text style={{ fontWeight: "bold" }}> Destination</Text>
                         </View>
@@ -128,7 +128,7 @@ function Add() {
                     <MaterialCommunityIcons
                         name="currency-usd"
                         size={24}
-                        color="#e91e63"
+                        color="#bb5050"
                     />
                     <Text style={styles.inputText}>
                         <View style={{ width: 5 }} />
@@ -142,7 +142,7 @@ function Add() {
                     minimumValue={0}
                     maximumValue={1000}
                     step={1}
-                    thumbStyle={{ height: 20, width: 20, backgroundColor: "#e91e63" }}
+                    thumbStyle={{ height: 20, width: 20, backgroundColor: "#bb5050" }}
                 />
 
                 <TouchableOpacity
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#e91e63",
+        backgroundColor: "#bb5050",
         borderRadius: 8,
         paddingVertical: 8,
         paddingHorizontal: 16,

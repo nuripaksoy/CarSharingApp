@@ -22,15 +22,15 @@ function Settings() {
 
       <View style={styles.settingsContainer}>
         <TouchableOpacity style={styles.settingItem} onPress={handleChangePassword}>
-          <MaterialCommunityIcons name="lock-reset" size={20} color="#e91e63" />
+          <MaterialCommunityIcons name="lock-reset" size={20} color="#bb5050" />
           <Text style={styles.settingText}>Change Password</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.settingItem} onPress={handleToggleNotifications}>
-          <MaterialCommunityIcons name="bell" size={20} color="#e91e63" />
+          <MaterialCommunityIcons name="bell" size={20} color="#bb5050" />
           <Text style={styles.settingText}>Notifications</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.settingItem} onPress={toggleModal}>
-          <MaterialCommunityIcons name="shield-lock" size={20} color="#e91e63" />
+          <MaterialCommunityIcons name="shield-lock" size={20} color="#bb5050" />
           <Text style={styles.settingText}>Privacy Policy</Text>
         </TouchableOpacity>
 
@@ -96,12 +96,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 16,
-    color: "#e91e63",
+    color: "#bb5050",
   },
   modalText: {
     fontSize: 16,
     marginBottom: 16,
-    color: "#e91e63",
+    color: "#bb5050",
   },
   modalButton: {
     paddingVertical: 8,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   modalButtonText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#e91e63",
+    color: "#bb5050",
   },
 });
 

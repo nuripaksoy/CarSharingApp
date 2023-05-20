@@ -83,8 +83,8 @@ function Login() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
       <View style={styles.form}>
+        <Text style={styles.title}>Login</Text>
         <TextInput
           style={styles.input}
           placeholder="Username"
@@ -172,7 +172,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: 8,
+    marginLeft: 8,
   },
   input: {
     width: '100%',
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   button: {
-    backgroundColor: '#e91e63',
+    backgroundColor: '#bb5050',
     width: '48%',
     justifyContent: 'center',
     alignItems: 'center',

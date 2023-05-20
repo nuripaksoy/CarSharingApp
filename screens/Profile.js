@@ -43,23 +43,23 @@ function Profile() {
     <View style={styles.container}>
       <View style={styles.profileInfo}>
         <TouchableOpacity style={styles.infoItem} onPress={toggleEditFullNameModal}>
-          <MaterialCommunityIcons name="account" size={20} color="#e91e63" />
+          <MaterialCommunityIcons name="account" size={20} color="#bb5050" />
           <Text style={styles.infoText}>{fullName}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.infoItem} onPress={toggleEditPhoneNumberModal}>
-          <MaterialCommunityIcons name="phone" size={20} color="#e91e63" />
+          <MaterialCommunityIcons name="phone" size={20} color="#bb5050" />
           <Text style={styles.infoText}>{phoneNumber}</Text>
         </TouchableOpacity>
         <View style={styles.infoItem}>
-          <MaterialCommunityIcons name="badge-account-horizontal" size={20} color="#e91e63" />
+          <MaterialCommunityIcons name="badge-account-horizontal" size={20} color="#bb5050" />
           <Text style={styles.infoText}>{rank}</Text>
         </View>
         <TouchableOpacity style={styles.infoItem} onPress={toggleCarInformationModal}>
-          <MaterialCommunityIcons name="car" size={20} color="#e91e63" />
+          <MaterialCommunityIcons name="car" size={20} color="#bb5050" />
           <Text style={styles.infoText}>Car Information</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.infoItem} onPress={toggleTicketsModal}>
-          <MaterialCommunityIcons name="ticket" size={20} color="#e91e63" />
+          <MaterialCommunityIcons name="ticket" size={20} color="#bb5050" />
           <Text style={styles.infoText}>My Tickets</Text>
         </TouchableOpacity>
       </View>

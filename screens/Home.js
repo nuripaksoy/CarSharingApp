@@ -65,7 +65,7 @@ function Home() {
           style={{ borderColor: "black", borderWidth: 2, borderRadius: 8, marginBottom: 8 }}
           placeholder={
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <MaterialCommunityIcons name="map-marker" size={24} color="#e91e63" />
+              <MaterialCommunityIcons name="map-marker" size={24} color="#bb5050" />
               <Text style={{ fontWeight: 'bold' }}> Starting Point</Text>
             </View>
           }
@@ -81,7 +81,7 @@ function Home() {
           style={{ borderColor: "black", borderWidth: 2, borderRadius: 8, marginBottom: 8 }}
           placeholder={
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <MaterialCommunityIcons name="map-marker-path" size={24} color="#e91e63" />
+              <MaterialCommunityIcons name="map-marker-path" size={24} color="#bb5050" />
               <Text style={{ fontWeight: 'bold' }}> Destination</Text>
             </View>
           }
@@ -96,7 +96,7 @@ function Home() {
       </View>
 
       <Text style={styles.title}>
-        <MaterialCommunityIcons name="routes" size={24} color="#e91e63" />
+        <MaterialCommunityIcons name="routes" size={24} color="#bb5050" />
         Available Routes
       </Text>
 
@@ -111,19 +111,19 @@ function Home() {
           {mockRoutes.map((route) => (
             <TouchableOpacity key={route.id} style={styles.routeItem}>
               <Text style={styles.routeText}>
-                <MaterialCommunityIcons name="map-marker" size={20} color="#e91e63" />
+                <MaterialCommunityIcons name="map-marker" size={20} color="#bb5050" />
                 <Text style={{ fontWeight: 'bold' }}> Starting Point:</Text> {route.startingPoint}
               </Text>
               <Text style={styles.routeText}>
-                <MaterialCommunityIcons name="map-marker-path" size={20} color="#e91e63" />
+                <MaterialCommunityIcons name="map-marker-path" size={20} color="#bb5050" />
                 <Text style={{ fontWeight: 'bold' }}> Destination:</Text> {route.destination}
               </Text>
               <Text style={styles.routeText}>
-                <MaterialCommunityIcons name="calendar" size={20} color="#e91e63" />
+                <MaterialCommunityIcons name="calendar" size={20} color="#bb5050" />
                 <Text style={{ fontWeight: 'bold' }}> Date:</Text> {route.date}
               </Text>
               <Text style={styles.routeText}>
-                <MaterialCommunityIcons name="currency-usd" size={20} color="#e91e63" />
+                <MaterialCommunityIcons name="currency-usd" size={20} color="#bb5050" />
                 <Text style={{ fontWeight: 'bold' }}> Price:</Text> {route.price}
               </Text>
             </TouchableOpacity>
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 8,
-    backgroundColor: '#e91e63',
+    backgroundColor: '#bb5050',
     paddingVertical: 10,
     paddingHorizontal: 8,
     borderRadius: 8,
