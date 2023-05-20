@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Shadow from '../styles/Shadow';
 
 function Login() {
   const [username, setUsername] = useState('admin');
@@ -12,30 +13,19 @@ function Login() {
   const navigation = useNavigation();
 
   const handleLogin = async () => {
-
-    // admin login for testing
+    // admin for testing
     if (username === 'admin' && password === 'admin') {
       navigation.navigate('HomeStackNavigator');
       return;
     }
 
-    // Perform the login logic here, e.g., call an API endpoint
-    // Pass the username and password to the login endpoint
     try {
-      const response = await fetch('http://192.168.236.254:5060/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
+      const response = await fetch('https://192.168.1.57:7777/api/user');
       if (response.ok) {
-        // Handle successful login
-        navigation.navigate('HomeStackNavigator');
+        const data = await response.json();
+        console.log(data);
       } else {
-        // Handle login error, e.g., display an error message
-        console.log('Login failed');
+        console.log('Failed to fetch ticket information');
       }
     } catch (error) {
       console.log('Error:', error);
@@ -81,10 +71,13 @@ function Login() {
     }
   };
 
+
   return (
     <View style={styles.container}>
       <View style={styles.form}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>
+          <MaterialCommunityIcons name="account" size={24} color="#bb5050" /> Login
+        </Text>
         <TextInput
           style={styles.input}
           placeholder="Username"
@@ -114,7 +107,8 @@ function Login() {
         <Modal visible={modalVisible} animationType="fade">
           <View style={styles.modalContainer}>
             < View style={styles.form}>
-              <Text style={styles.modalTitle}>Registration</Text>
+              <Text style={styles.modalTitle}>
+                <MaterialCommunityIcons name="account-plus" size={24} color="#bb5050" /> Registration</Text>
               <TextInput
                 style={styles.input}
                 placeholder="Full Name"
@@ -178,7 +172,7 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     paddingLeft: 8,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'black',
     borderRadius: 8,
     height: 45,
@@ -217,11 +211,10 @@ const styles = StyleSheet.create({
   },
   form: {
     width: '100%',
-    borderWidth: 2,
-    borderColor: 'black',
     borderRadius: 8,
     padding: 8,
     backgroundColor: '#fff',
+    ...Shadow.shadow,
   },
 });
 

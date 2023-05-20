@@ -10,7 +10,7 @@ import { StatusBar } from 'react-native'
 export default function App() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#bb5050" />
+      <StatusBar translucent={true} />
       <NavigationContainer >
         <StackNavigator>
           <MyTabs />

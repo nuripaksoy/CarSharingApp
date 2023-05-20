@@ -3,8 +3,9 @@ import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import DropDownPicker from "react-native-dropdown-picker";
-import Cities from "../Constants/cities";
 import { Slider } from "react-native-elements";
+import cities from "../constants/cities";
+import Shadow from '../styles/Shadow';
 
 function Add() {
     const [showDatePicker, setShowDatePicker] = useState(false);
@@ -14,13 +15,11 @@ function Add() {
     // dropdown items
     const [startingPointOpen, setStartingPointOpen] = useState(false);
     const [startingPointValue, setStartingPointValue] = useState(null);
-    const [startingPointItems, setStartingPointItems] = useState(Cities);
+    const [startingPointItems, setStartingPointItems] = useState(cities);
 
     const [destinationOpen, setDestinationOpen] = useState(false);
     const [destinationValue, setDestinationValue] = useState(null);
-    const [destinationItems, setDestinationItems] = useState(Cities);
-
-    const cities = ["New York", "London", "Paris", "Tokyo"];
+    const [destinationItems, setDestinationItems] = useState(cities);
 
     const handleSaveRoute = () => {
         // Perform save route logic
@@ -78,12 +77,7 @@ function Add() {
                     setValue={setStartingPointValue}
                     setItems={setStartingPointItems}
                     zIndex={1200}
-                    style={{
-                        borderColor: "black",
-                        borderWidth: 2,
-                        borderRadius: 8,
-                        marginBottom: 8,
-                    }}
+                    style={{ ...Shadow.shadow, borderWidth: 0, borderRadius: 8, marginBottom: 8 }}
                     placeholder={
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <MaterialCommunityIcons
@@ -103,12 +97,7 @@ function Add() {
                     setValue={setDestinationValue}
                     setItems={setDestinationItems}
                     zIndex={1100}
-                    style={{
-                        borderColor: "black",
-                        borderWidth: 2,
-                        borderRadius: 8,
-                        marginBottom: 8,
-                    }}
+                    style={{ ...Shadow.shadow, borderWidth: 0, borderRadius: 8, marginBottom: 8 }}
                     placeholder={
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <MaterialCommunityIcons
@@ -173,8 +162,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         width: "100%",
         height: 50,
-        borderWidth: 2,
-        borderColor: "black",
+        ...Shadow.shadow,
         borderRadius: 8,
         paddingHorizontal: 10,
         marginBottom: 8,
@@ -198,8 +186,7 @@ const styles = StyleSheet.create({
         color: "#fff",
     },
     form: {
-        borderWidth: 2,
-        borderColor: "black",
+        ...Shadow.shadow,
         borderRadius: 8,
         padding: 8,
         backgroundColor: "#fff",

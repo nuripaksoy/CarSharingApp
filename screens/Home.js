@@ -3,8 +3,9 @@ import { Text, View, ScrollView, StyleSheet, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
-import mockRoutes from "../Constants/mockRoutes";
-import cities from "../Constants/cities";
+import mockRoutes from "../constants/mockRoutes";
+import cities from "../constants/cities";
+import Shadow from '../styles/Shadow';
 
 function Home() {
   const [routes, setRoutes] = useState([]);
@@ -62,7 +63,7 @@ function Home() {
           setValue={setStartingPointValue}
           setItems={setStartingPointItems}
           zIndex={1200}
-          style={{ borderColor: "black", borderWidth: 2, borderRadius: 8, marginBottom: 8 }}
+          style={{ ...Shadow.shadow, borderWidth: 0, borderRadius: 8, marginBottom: 8 }}
           placeholder={
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <MaterialCommunityIcons name="map-marker" size={24} color="#bb5050" />
@@ -78,7 +79,7 @@ function Home() {
           setValue={setDestinationValue}
           setItems={setDestinationItems}
           zIndex={1100}
-          style={{ borderColor: "black", borderWidth: 2, borderRadius: 8, marginBottom: 8 }}
+          style={{ ...Shadow.shadow, borderWidth: 0, borderRadius: 8, marginBottom: 8 }}
           placeholder={
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <MaterialCommunityIcons name="map-marker-path" size={24} color="#bb5050" />
@@ -151,8 +152,7 @@ const styles = StyleSheet.create({
     height: "auto",
     gap: 8,
     marginBottom: 20,
-    borderColor: "black",
-    borderWidth: 2,
+    ...Shadow.shadow,
     borderRadius: 8,
     paddingHorizontal: 8,
     paddingVertical: 8,
@@ -160,18 +160,16 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: "black",
     borderRadius: 8,
   },
   routeList: {
     flex: 1,
     width: "100%",
-    backgroundColor: "white",
-    borderColor: "black",
-    borderWidth: 2,
+    ...Shadow.shadow,
     borderRadius: 8,
-    paddingHorizontal: 8,
+    backgroundColor: "white",
   },
   scrollViewContent: {
     flexGrow: 1,
@@ -179,12 +177,12 @@ const styles = StyleSheet.create({
   },
   routeItem: {
     backgroundColor: "white",
-    borderColor: "black",
-    borderWidth: 2,
+    ...Shadow.shadow,
     padding: 8,
     marginBottom: 8,
     borderRadius: 8,
-    width: "100%",
+    alignSelf: "center",
+    width: "95%",
   },
   routeText: {
     marginBottom: 4,

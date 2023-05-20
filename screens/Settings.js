@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Text, View, TouchableOpacity, Modal, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Shadow from '../styles/Shadow';
 
 function Settings() {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -63,8 +64,7 @@ const styles = StyleSheet.create({
   settingsContainer: {
     alignItems: "center",
     width: "100%",
-    borderColor: "black",
-    borderWidth: 2,
+    ...Shadow.shadow,
     borderRadius: 8,
     padding: 8,
     backgroundColor: "white",
@@ -73,8 +73,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 4,
-    borderColor: "black",
-    borderWidth: 2,
+    ...Shadow.shadow,
     borderRadius: 8,
     padding: 16,
     width: "100%",

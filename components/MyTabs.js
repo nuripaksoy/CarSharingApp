@@ -16,7 +16,7 @@ function MyTabs() {
         tabBarInactiveTintColor: 'black',
         tabBarStyle: {
           backgroundColor: '#fff',
-          borderTopWidth: 2,
+          borderTopWidth: 1,
           borderTopColor: 'black',
         },
       }}>
