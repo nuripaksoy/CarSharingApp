@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 import Shadow from '../styles/Shadow';
-import cities from "../constants/cities";
+import cities from "../Constants/cities";
 import mockRoutes from "../Constants/mockRoutes";
 
 function Home() {

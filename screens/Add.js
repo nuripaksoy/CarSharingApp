@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Slider } from "react-native-elements";
-import cities from "../constants/cities";
+import cities from "../Constants/cities";
 import Shadow from '../styles/Shadow';
 
 function Add() {
